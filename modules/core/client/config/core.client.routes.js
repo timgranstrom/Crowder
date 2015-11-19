@@ -24,6 +24,6 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
           .state('city', {
               url: '/cities/:cityId',
               templateUrl: 'modules/core/views/city.template.client.view.html'
-          })
+          });
 
   }]);

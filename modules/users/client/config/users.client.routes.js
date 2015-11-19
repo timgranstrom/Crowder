@@ -38,7 +38,7 @@ angular.module('users').config(['$stateProvider',
       .state('authentication.signin', {
         url: '/signin?err',
         templateUrl: 'modules/users/views/authentication/signin.client.view.html'
-      })
+      });
 
   }
 ]);
