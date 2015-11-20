@@ -89,6 +89,29 @@ exports.changeProfilePicture = function (req, res) {
 };
 
 /**
+ * Delete a user
+ */
+exports.delete = function (req, res) {
+  var user = req.user;
+
+    if (!user) {
+        return res.status(401).json({
+            message: 'User is not authenticated'
+        });
+    }
+
+  user.remove(function (err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    }
+
+    res.json(user);
+  });
+};
+
+/**
  * Send User
  */
 exports.me = function (req, res) {
