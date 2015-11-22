@@ -2,7 +2,7 @@
 
 angular.module('core')
 
-    .controller('MapController',['$scope', function($scope) {
+    .controller('MapController',['$scope','$state', function($scope,$state) {
 
 
 
@@ -25,9 +25,12 @@ angular.module('core')
                         $scope.location = city.split(',')[0];
 
 
-                        window.location = '/cities/' + $scope.location;
+                       // window.location = '/cities/' + $scope.location;
+                        //window.location.replace('/cities/' + $scope.location);
+                        //if(confirm('Is '+ $scope.location + ' your current city?')){
+                        $state.go('city',{cityId: $scope.location});
 
-
+                    //}
                     }
                 };
                 request.send();
