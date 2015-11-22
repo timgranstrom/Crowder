@@ -19,8 +19,8 @@ angular.module('users').config(['$stateProvider',
       })
 
       .state('settings.accounts', {
-        url: '/yourprofile',
-        templateUrl: 'modules/users/views/settings/profile.client.view.html'
+        url: '/ownposts',
+        templateUrl: 'modules/users/views/settings/own-posts.client.view.html'
       })
       .state('settings.picture', {
         url: '/picture',

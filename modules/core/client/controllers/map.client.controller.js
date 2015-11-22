@@ -25,9 +25,7 @@ angular.module('core')
                         $scope.location = city.split(',')[0];
 
 
-
-                        //console.log($scope.location);
-                        //window.location = '#/cities/' + $scope.location;
+                        window.location = '/cities/' + $scope.location;
 
 
                     }
