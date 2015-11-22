@@ -23,12 +23,14 @@ angular.module('users').controller('EditProfileController', ['$scope','$state', 
 
 
     $scope.removeUser = function () {
-      if (confirm('Are you sure you want to delete you from the site?')) {
+     // if (confirm('Are you sure you want to delete you from the site?')) {
         //if (user) {
         var user = new Users($scope.user);
         user.$remove();
-        alert('Your account have been removed!');
+       // alert('Your account have been removed!');
         window.location.href='/api/auth/signout';
+
+
 
 
           //$state.go('home');
@@ -38,7 +40,7 @@ angular.module('users').controller('EditProfileController', ['$scope','$state', 
     //      //  $state.go('home');
     //      //});
         //}
-      }
+   //   }
     };
   }
 ]);
