@@ -26,36 +26,9 @@
                 <div class="text-center form-group">
                     <button type="submit" class="btn btn-lg btn-primary">Save Profile</button>
                     <p></p>
-                    <!--<button data-ng-click="removeUser()" class="btn btn-lg btn-danger">Delete your profile</button>-->
-                    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">
+                    <button type="button" class="btn btn-danger btn" data-toggle="modal" data-target="#myModal">
                         Delete your profile
                     </button>
-                </div>
-                <!-- Modal -->
-                <div id="myModal" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title" style="background-color:#ff26f0;">Delete user:
-                                    {{user.username}} </h4>
-                            </div>
-                            <div class="modal-body" style="background-color:#ff26f0;">
-                                <p>Are you sure you want to delete your self from the site?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" style="background-color:#ccf3ff;" class="btn btn-default"
-                                        data-dismiss="modal">No
-                                </button>
-                                <button type="button" style="background-color:#ccf3ff;" class="btn btn-default"
-                                        ng-click="removeUser()">Yes
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
 
                 <div data-ng-show="success" class="text-center text-success">
@@ -67,13 +40,30 @@
             </fieldset>
         </form>
     </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-    <!-- Trigger the modal with a button -->
-
-
-    <!--<a class="btn btn-primary" data-ng-click="removeUser();">-->
-    <!--<i class="glyphicon glyphicon-trash"></i>-->
-    <!--</a>-->
-
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="background-color:#ff26f0;">Delete user:
+                        {{user.username}} </h4>
+                </div>
+                <div class="modal-body" style="background-color:#ff26f0;">
+                    <p>Are you sure you want to delete your self from the site?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" style="background-color:#ccf3ff;" class="btn btn-default"
+                            data-dismiss="modal">No
+                    </button>
+                    <button type="button" style="background-color:#ccf3ff;" class="btn btn-default"
+                            ng-click="removeUser()">Yes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
