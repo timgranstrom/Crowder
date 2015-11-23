@@ -11,9 +11,9 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       $stateProvider
           .state('home', {
               url: '/',
-              templateUrl: 'modules/core/views/home.client.view.html',
+              templateUrl: 'modules/core/views/home.client.view.html'
               //data: {
-              //    roles: ['user', 'admin']
+              //    roles: ['user','admin']
               //}
           })
           .state('not-found', {
@@ -23,7 +23,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 
           .state('city', {
               url: '/cities/:cityId',
-              templateUrl: 'modules/core/views/city.template.client.view.html'
+              templateUrl: 'modules/core/views/city.template.client.view.html',
+              data: {
+                  roles: ['user','admin']
+              }
           });
 
   }]);

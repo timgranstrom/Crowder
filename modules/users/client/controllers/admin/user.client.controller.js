@@ -6,7 +6,7 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
     $scope.user = userResolve;
 
     $scope.remove = function (user) {
-      if (confirm('Are you sure you want to delete this user?')) {
+
         if (user) {
           user.$remove();
 
@@ -15,14 +15,15 @@ angular.module('users.admin').controller('UserController', ['$scope', '$state', 
           $scope.user.$remove(function () {
             $state.go('admin.users');
           });
-        }
+
       }
     };
 
     $scope.update = function () {
       var user = $scope.user;
 
-      user.$update(function () {
+      user.$update
+      (function () {
         $state.go('admin.user', {
           userId: user._id
         });
