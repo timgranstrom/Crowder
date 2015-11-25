@@ -9,15 +9,25 @@ angular.module('users').controller('ChangeProfilePictureController', ['$scope', 
     $scope.uploader = new FileUploader({
       url: 'api/users/picture'
     });
-
     // Set file uploader image filter
     $scope.uploader.filters.push({
       name: 'imageFilter',
-      fn: function (item, options) {
-        var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-        return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+      fn: function (item) {
+        var maxSize=3000000;//3MB
+        if(item.size>maxSize){
+          alert('Maximum picture size allowed is 3MB');
+          return false;
+        }
+        else {
+
+          var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+          return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+
+        }
+
       }
     });
+
 
     // Called after the user selected a new picture file
     $scope.uploader.onAfterAddingFile = function (fileItem) {
@@ -68,5 +78,6 @@ angular.module('users').controller('ChangeProfilePictureController', ['$scope', 
       $scope.uploader.clearQueue();
       $scope.imageURL = $scope.user.profileImageURL;
     };
+
   }
 ]);
