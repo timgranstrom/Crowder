@@ -1,6 +1,21 @@
 'use strict';
 
-angular.module('posts').controller('PostsController', ['$scope', '$state', 'Authentication', 'Posts',
+var postsApp = angular.module('posts');
+
+postsApp.controller('PostsController', ['$scope', '$state', 'Authentication', 'Posts',
+    function ($scope, $state, Authentication, Posts) {
+        $scope.authentication = Authentication;
+
+        $scope.listPosts = function(){
+            $scope.posts = Posts.query();
+        }
+
+        $scope.$on('updateGetPosts', function (event,args) {
+            $scope.listPosts();
+        });
+    }]);
+
+postsApp.controller('PostsCreateController', ['$scope', '$state', 'Authentication', 'Posts',
     function ($scope, $state, Authentication, Posts) {
         $scope.authentication = Authentication;
 
@@ -9,18 +24,12 @@ angular.module('posts').controller('PostsController', ['$scope', '$state', 'Auth
                 content: this.content
             });
 
-            //Redirect after save
+            //refetch the updated list of posts
             post.$create(function (response) {
-                $scope.getPosts();
+                $scope.$root.$broadcast('updateGetPosts');
             }, function (errorResponse) {
-                $scope.error = errorResponse.data.message;
+                this.error = errorResponse.data.message;
             });
 
         };
-
-        $scope.getPosts = function () {
-            $scope.posts = Posts.query();
-        };
-
-
     }]);
