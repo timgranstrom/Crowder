@@ -33,13 +33,13 @@ exports.create = function(req,res){
  * List of posts sorted by creation
  */
 exports.list = function (req, res) {
-  Post.find().sort('-created').populate('user', 'displayName').exec(function (err, users) {
+  Post.find().sort('-created').populate('creator', 'displayName').exec(function (err, posts) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     }
-    res.json(users);
+    res.json(posts);
   });
 };
 

@@ -11,12 +11,20 @@ angular.module('posts').controller('PostsController', ['$scope', '$state', 'Auth
 
           //Redirect after save
           post.$create(function (response) {
-              $state.go('home');
+              $scope.getPosts();
+              //$scope.$apply();
+              //$state.go('createPost');
           }, function (errorResponse) {
               $scope.error = errorResponse.data.message;
           });
 
       };
+
+      $scope.getPosts = function(){
+          $scope.posts = Posts.query();
+      };
+
+
   }]);
     //$scope.remove = function (user) {
     //
