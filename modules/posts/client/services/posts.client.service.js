@@ -4,7 +4,7 @@
 angular.module('posts').factory('Posts', ['$resource',
   function ($resource) {
     return $resource('api/posts', {}, {
-      save: {
+      create: {
         method: 'POST'
       }
     });

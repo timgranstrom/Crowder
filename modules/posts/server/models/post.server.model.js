@@ -18,7 +18,7 @@ var PostSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  userId: {
+  creator: {
     type: Schema.ObjectId,
     ref: 'User'
   }

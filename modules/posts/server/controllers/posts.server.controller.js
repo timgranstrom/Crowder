@@ -16,8 +16,8 @@ var path = require('path'),
 exports.create = function(req,res){
   var post = new Post(req.body);
   post.user = req.user;
-  post.content = req.content;
-
+  post.creator = req.user;
+  console.log(post);
   post.save(function(err){
     if(err){
       return res.status(400).send({

@@ -10,7 +10,7 @@ angular.module('posts').controller('PostsController', ['$scope', '$state', 'Auth
           });
 
           //Redirect after save
-          post.$save(function (response) {
+          post.$create(function (response) {
               $state.go('home');
           }, function (errorResponse) {
               $scope.error = errorResponse.data.message;
