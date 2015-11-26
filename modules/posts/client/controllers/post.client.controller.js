@@ -8,7 +8,7 @@ postsApp.controller('PostsController', ['$scope', '$state', 'Authentication', 'P
 
         $scope.listPosts = function(){
             $scope.posts = Posts.query();
-        }
+        };
 
         $scope.$on('updateGetPosts', function (event,args) {
             $scope.listPosts();

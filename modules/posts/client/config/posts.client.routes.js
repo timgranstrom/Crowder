@@ -5,8 +5,8 @@ angular.module('users').config(['$stateProvider',
   function ($stateProvider) {
     // Users state routing
     $stateProvider
-      .state('createPost', {
-        url: '/createPost',
+      .state('posts', {
+        url: '/posts',
         templateUrl: 'modules/posts/views/create.post.client.view.html',
         data: {
           roles: ['user', 'admin']
