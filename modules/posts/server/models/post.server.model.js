@@ -20,7 +20,13 @@ var PostSchema = new Schema({
     },
     creator: {
         type: Schema.ObjectId,
-        ref: 'User'
+        ref: 'User',
+       // required: 'No user is linked to this post'  //Uncommented for now in order to not crash the application
+    },
+    location: {
+        type: Schema.ObjectId,
+        ref: 'Location',
+        //required: 'Please select a location' //Uncommented for now in order to not crash the application
     }
 });
 
