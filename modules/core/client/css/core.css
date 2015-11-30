@@ -33,3 +33,12 @@ a:hover .header-profile-image {
   padding-top: 11px !important;
   padding-bottom: 11px !important;
 }
+
+  .header-background {
+    background-color: #cc7a00;
+  }
+  .header-text{
+       text-decoration-color: #00A000;
+     }
+
+

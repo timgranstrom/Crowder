@@ -1,14 +1,14 @@
-<div class="container" data-ng-controller="HeaderController">
-  <div class="navbar-header">
+<div class="header-background ">
+<div class="container " data-ng-controller="HeaderController" >
+  <div class="navbar-header" >
     <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
       <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
+      <span class="icon-bar "></span>
+      <span class="icon-bar "></span>
       <span class="icon-bar"></span>
     </button>
-    <a data-ui-sref="home" class="navbar-brand">Crowder</a>
-
-    <a data-ui-sref="wall" class="navbar-brand">Walls</a>
+    <a  data-ui-sref="home" class="navbar-brand ">Crowder</a>
+    <a  data-ui-sref="wall" class="navbar-brand">Walls</a>
   </div>
   <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
     <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
@@ -28,7 +28,7 @@
       <!--</li>-->
       <li class="divider-vertical"></li>
       <li data-ui-sref-active="active">
-        <a data-ui-sref="authentication">Sign In</a>
+        <a   data-ui-sref="authentication">Sign In</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
@@ -58,4 +58,5 @@
       </li>
     </ul>
   </nav>
+</div>
 </div>
