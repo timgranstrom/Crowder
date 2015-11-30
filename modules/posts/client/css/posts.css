@@ -1,0 +1,26 @@
+
+.fixed-button {
+    position: fixed;
+    right: 300px;
+    bottom: 300px;
+}
+
+.circle-text {
+    display: block;
+    width: 70px;
+    height: 70px;
+    line-height: 50px;
+    border: 2px solid #ca7901;
+    border-radius: 50%;
+    color: #E1E1E1;
+    text-align: center;
+    text-decoration: none;
+    background: #ca7901;
+    box-shadow: 0 0 3px gray;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.round-button:hover {
+    background: #ca7901;
+}
