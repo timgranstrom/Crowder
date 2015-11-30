@@ -14,6 +14,7 @@ var path = require('path'),
  *  Create a post
  */
 exports.create = function (req, res) {
+    console.log(req.user);
     var post = new Post(req.body);
     post.user = req.user;
     post.creator = req.user;
@@ -32,7 +33,7 @@ exports.create = function (req, res) {
  * List of posts sorted by creation
  */
 exports.list = function (req, res) {
-    Post.find().sort('-created').populate('creator', 'profileImageURL username').exec(function (err, posts) {
+    Post.find().sort('-created').populate('creator', 'profileImageURL username _id').populate('location','_id').exec(function (err, posts) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)

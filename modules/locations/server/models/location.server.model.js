@@ -13,17 +13,17 @@ var LocationSchema = new Schema({
     municipality: {
         type: String,
         trim: true,
-        required: 'Please post content'
+        required: 'Please include municipality'
     },
     region: {
         type: String,
         trim: true,
-        required: 'Please post content'
+        required: 'Please include region'
     },
     country: {
         type: String,
         trim: true,
-        required: 'Please post content'
+        required: 'Please include country'
     },
     info: {
         type: String,
