@@ -1,8 +1,8 @@
 
 .fixed-button {
     position: fixed;
-    right: 300px;
-    bottom: 300px;
+    right: 10%;
+    bottom: 30%;
 }
 
 .circle-text {
@@ -10,17 +10,29 @@
     width: 70px;
     height: 70px;
     line-height: 50px;
-    border: 2px solid #ca7901;
+    border: 2px solid #ff9908;
     border-radius: 50%;
     color: #E1E1E1;
     text-align: center;
     text-decoration: none;
-    background: #ca7901;
+    background: #ff9908;
     box-shadow: 0 0 3px gray;
     font-size: 50px;
     font-weight: bold;
 }
-
+.circle-text:hover{
+    color: #c8c8c8;
+}
 .round-button:hover {
-    background: #ca7901;
+    background: #FF9908;
+}
+.background-color{
+    border: #FF9908 1px solid;
+
+}
+.text-size{
+    font-size:large;
+}
+.button:active{
+    background-color: #ff9908;
 }

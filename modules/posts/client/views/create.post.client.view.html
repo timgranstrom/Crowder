@@ -1,32 +1,23 @@
-<button ng-controller="headerCtrl" class="circle-text fixed-button" data-toggle="modal" data-target="#postModal"> +
-</button>
-
-<section class="row" data-ng-controller="PostsCreateController">
 
 
-    <!--<form name="postForm" data-ng-submit="create()" class="form-horizontal jumbotron text-center">-->
-    <!--<fieldset>-->
-    <!--<div class="form-group">-->
-    <!--<h3 for="content">Post Content</h3>-->
-    <!--<textarea id="content" name="content" class="form-control"-->
-    <!--data-ng-model="content" placeholder="POST CONTENT" style="resize:none" rows="5"></textarea>-->
-    <!--</div>-->
-    <!--<div class="text-center form-group">-->
-    <!--<button type="submit" class="btn btn-lg btn-primary">Create Post</button>-->
-    <!--</div>-->
-    <!--</fieldset>-->
-    <!--</form>-->
+
+
+
+
+    <section class="row" data-ng-controller="PostsCreateController">
 
 
     <section class="row" data-ng-controller="PostsController" data-ng-init="listPosts()">
         <div class="col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4 col-lg-offset-3 col-lg-6">
+            <button ng-controller="headerCtrl" class="circle-text fixed-button" data-toggle="modal" data-target="#postModal"> +
+            </button>
             <div class="list-group">
-                <a data-ng-repeat="post in posts" class="list-group-item" style="margin-bottom:10px">
+                <a data-ng-repeat="post in posts" class="list-group-item background-color" style="margin-bottom:10px">
 
                     <img src="{{post.creator.profileImageURL}}" class="img-thumbnail" width="50"
                          style="margin-right:10px">
 
-                    <h3 class="list-group-item-heading " style="display:inline">{{post.content}}</h3>
+                    <h4 class="list-group-item-heading " style="display:inline">{{post.content}}</h4>
 
 
                     <p class="list-group-item-text" data-ng-bind="post.creator.username"></p>
@@ -39,6 +30,7 @@
             </div>
 
         </div>
+
 
 
     </section>
@@ -60,7 +52,7 @@
                               data-ng-model="content" placeholder="POST CONTENT"
                               rows="5" maxlength="150"></textarea>
 
-                        <p>Number of characters left: <span ng-bind="left()"></span></p>
+                        <p><span data-ng-bind="'Number of characters left:'+ left()"></span></p>
                     </div>
                 </div>
                 <div class="modal-footer">
