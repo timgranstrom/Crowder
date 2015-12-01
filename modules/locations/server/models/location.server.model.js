@@ -44,7 +44,7 @@ LocationSchema.pre('save', function (next) {
         if (!docs.length){
             next();
         }else{
-            next(new Error("Location exists!"));
+            next(new Error('Location exists!'));
         }
     });
 }) ;
