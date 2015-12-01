@@ -6,39 +6,36 @@
 var path = require('path'),
     _ = require('lodash'),
     mongoose = require('mongoose'),
-    Post = mongoose.model('Post'),
+    Location = mongoose.model('Location'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 
 /**
- *  Create a post
+ *  Create a location
  */
 exports.create = function (req, res) {
-    console.log(req.user);
-    var post = new Post(req.body);
-    post.user = req.user;
-    post.creator = req.user;
-    post.save(function (err) {
+    var location = new Location(req.body);
+    location.save(function (err) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            res.jsonp(post);
+            res.jsonp(location);
         }
     });
 };
 
 /**
- * List of posts sorted by creation
+ * List of locations sorted by creation date
  */
 exports.list = function (req, res) {
-    Post.find().sort('-created').populate('creator', 'profileImageURL username _id').populate('location','_id').exec(function (err, posts) {
+    Location.find(req.query).sort('-created').exec(function (err, locations) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         }
-        res.json(posts);
+        res.json(locations);
     });
 };
