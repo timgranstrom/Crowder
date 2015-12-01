@@ -7,9 +7,10 @@ angular.module('users').controller('EditProfileController', ['$scope','$state', 
     // Update a user profile
     $scope.updateUserProfile = function (isValid) {
       if (isValid) {
+        $scope.user.profileImageURL = Authentication.user.profileImageURL; //Do this again because of possiblility of user object changed
+
         $scope.success = $scope.error = null;
         var user = new Users($scope.user);
-
         user.$update(function (response) {
           $scope.success = true;
           Authentication.user = response;
