@@ -1,8 +1,8 @@
 'use strict';
 
-var postsApp = angular.module('locations');
+var locationsApp = angular.module('locations');
 
-postsApp.controller('LocationController', ['$scope', '$state', 'Authentication', 'Locations',
+locationsApp.controller('LocationController', ['$scope', '$state', 'Authentication', 'Locations',
     function ($scope, $state, Authentication, Locations) {
 
         $scope.authentication = Authentication;
@@ -17,7 +17,7 @@ postsApp.controller('LocationController', ['$scope', '$state', 'Authentication',
 
     }]);
 
-postsApp.controller('PostsCreateController', ['$scope', '$state', 'Authentication', 'Locations',
+locationsApp.controller('LocationsCreateController', ['$scope', '$state', 'Authentication', 'Locations',
     function ($scope, $state, Authentication, Locations) {
         $scope.authentication = Authentication;
 
