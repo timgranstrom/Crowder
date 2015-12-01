@@ -21,7 +21,10 @@ postsApp.controller('PostsCreateController', ['$scope', '$state', 'Authenticatio
     function ($scope, $state, Authentication, Posts) {
         $scope.authentication = Authentication;
         $scope.left = function () {
-            return 150 - $scope.content.length;
+            var content = $scope.content;
+            if(content){
+                return 150 - content.length;
+            }
         };
 
         $scope.create = function () {
@@ -32,6 +35,7 @@ postsApp.controller('PostsCreateController', ['$scope', '$state', 'Authenticatio
             //refetch the updated list of posts
             post.$create(function (response) {
                 $scope.$root.$broadcast('updateGetPosts');
+                $scope.content = '';
             }, function (errorResponse) {
                 this.error = errorResponse.data.message;
             });
