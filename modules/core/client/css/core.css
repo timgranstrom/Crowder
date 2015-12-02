@@ -53,4 +53,7 @@ a:hover .header-profile-image {
   color: #c8c8c8;
   background-color: transparent;
 }
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .active > a{
+  background-image: linear-gradient(to bottom, #ff9908 0%, #ff9908 100%)
+}
 

@@ -1,18 +1,21 @@
 
 .fixed-button {
     position: fixed;
-    right: 10%;
-    bottom: 30%;
+    z-index: 1;
 }
 
-.circle-text {
-    display: block;
+.margin-height {
+    margin-bottom: 110px;
+    margin-top: 30px;
+}
+
+.circle-button {
     width: 70px;
     height: 70px;
     line-height: 50px;
     border: 2px solid #ff9908;
     border-radius: 50%;
-    color: #E1E1E1;
+    color: #FFFFFF;
     text-align: center;
     text-decoration: none;
     background: #ff9908;
@@ -26,12 +29,36 @@
 .round-button:hover {
     background: #FF9908;
 }
-.background-color{
-    border: #FF9908 1px solid;
-
+.text-area-no-resize{
+    resize: none;
 }
-.text-size{
-    font-size:large;
+
+.post{
+    border: #FF9908 1px solid;
+    margin-bottom:20px;
+}
+
+.post-head{
+    margin-bottom:10px;
+}
+
+.post-bottom{
+    margin-top:10px;
+}
+
+.post-hr{
+    margin-top:5px;
+    margin-bottom:5px;
+    border-top:1px solid #ff9908
+}
+
+.post-profile-image{
+    margin-right:10px;
+    border:1px solid #ff9908;
+}
+
+.post-username{
+    display:inline;
 }
 .button:active{
     background-color: #ff9908;
