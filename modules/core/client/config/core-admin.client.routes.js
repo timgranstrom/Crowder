@@ -9,7 +9,7 @@ angular.module('core.admin.routes').config(['$stateProvider',
         url: '/admin',
         template: '<ui-view/>',
         data: {
-          roles: ['admin','user'] // added user during develop process
+          roles: ['admin'] // added user during develop process
         }
       });
   }
