@@ -11,6 +11,10 @@ postsApp.controller('PostsController', ['$scope', '$state', 'Authentication', 'P
             $scope.posts = Posts.query();
         };
 
+        $scope.listUserPosts = function() {
+            $scope.posts = Posts.query({'creator':$scope.user._id});
+        };
+
         $scope.$on('updateGetPosts', function (event, args) {
             $scope.listPosts();
         });
