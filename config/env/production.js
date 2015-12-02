@@ -4,10 +4,10 @@ module.exports = {
   secure: true,
   port: process.env.PORT || 8443,
   db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean',
+    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || '@ds059804.mongolab.com:59804') + '/crowder',
     options: {
-      user: '',
-      pass: ''
+      user: 'developer',
+      pass: 'dev'
     },
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false
@@ -22,8 +22,8 @@ module.exports = {
     }
   },
   facebook: {
-    clientID: process.env.FACEBOOK_ID || 'APP_ID',
-    clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
+    clientID: process.env.FACEBOOK_ID || '141582882868437',
+    clientSecret: process.env.FACEBOOK_SECRET || 'a6d986f89567ca76e31abdc5bb50178c',
     callbackURL: '/api/auth/facebook/callback'
   },
   twitter: {

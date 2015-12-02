@@ -1,0 +1,65 @@
+
+.fixed-button {
+    position: fixed;
+    z-index: 1;
+}
+
+.margin-height {
+    margin-bottom: 110px;
+    margin-top: 30px;
+}
+
+.circle-button {
+    width: 70px;
+    height: 70px;
+    line-height: 50px;
+    border: 2px solid #ff9908;
+    border-radius: 50%;
+    color: #FFFFFF;
+    text-align: center;
+    text-decoration: none;
+    background: #ff9908;
+    box-shadow: 0 0 3px gray;
+    font-size: 50px;
+    font-weight: bold;
+}
+.circle-text:hover{
+    color: #c8c8c8;
+}
+.round-button:hover {
+    background: #FF9908;
+}
+.text-area-no-resize{
+    resize: none;
+}
+
+.post{
+    border: #FF9908 1px solid;
+    margin-bottom:20px;
+}
+
+.post-head{
+    margin-bottom:10px;
+}
+
+.post-bottom{
+    margin-top:10px;
+}
+
+.post-hr{
+    margin-top:5px;
+    margin-bottom:5px;
+    border-top:1px solid #ff9908
+}
+
+.post-profile-image{
+    margin-right:10px;
+    border:1px solid #ff9908;
+}
+
+.post-username{
+    display:inline;
+}
+.button:active{
+    background-color: #ff9908;
+}

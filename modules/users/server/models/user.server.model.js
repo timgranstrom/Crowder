@@ -45,6 +45,10 @@ var UserSchema = new Schema({
     default: '',
     validate: [validateLocalStrategyProperty, 'Please fill in your last name']
   },
+  karma:{
+    type: Number,
+    default: 0
+  },
   displayName: {
     type: String,
     trim: true

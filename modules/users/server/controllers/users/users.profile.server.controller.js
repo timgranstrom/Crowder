@@ -56,13 +56,13 @@ exports.changeProfilePicture = function (req, res) {
   var message = null;
 
   if (user) {
-    fs.writeFile('./modules/users/client/img/profile/uploads/' + req.files.file.name, req.files.file.buffer, function (uploadError) {
+    fs.writeFile('./modules/users/client/img/profile/upload/' + req.files.file.name, req.files.file.buffer, function (uploadError) {
       if (uploadError) {
         return res.status(400).send({
           message: 'Error occurred while uploading profile picture'
         });
       } else {
-        user.profileImageURL = 'modules/users/img/profile/uploads/' + req.files.file.name;
+        user.profileImageURL = 'modules/users/img/profile/upload/' + req.files.file.name;
 
         user.save(function (saveError) {
           if (saveError) {
@@ -86,6 +86,29 @@ exports.changeProfilePicture = function (req, res) {
       message: 'User is not signed in'
     });
   }
+};
+
+/**
+ * Delete a user
+ */
+exports.delete = function (req, res) {
+  var user = req.user;
+
+    if (!user) {
+        return res.status(401).json({
+            message: 'User is not authenticated'
+        });
+    }
+
+  user.remove(function (err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    }
+
+    res.json(user);
+  });
 };
 
 /**

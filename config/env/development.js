@@ -4,7 +4,7 @@ var defaultEnvConfig = require('./default');
 
 module.exports = {
   db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || '@ds055584.mongolab.com:55584') + '/crowder-dev',//'mongodb://<dbuser>:<dbpassword>@ds055584.mongolab.com:55584/crowder-dev'//process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean-dev',
+    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || '@ds055584.mongolab.com:55584') + '/crowder-dev',
     options: {
       user: 'developer',
       pass: 'dev'
