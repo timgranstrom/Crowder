@@ -1,12 +1,11 @@
 
 .fixed-button {
     position: fixed;
-    right: 10%;
-    bottom: 30%;
+    z-index: 1;
 }
 
 .margin-height {
-    margin-bottom: 30px;
+    margin-bottom: 110px;
     margin-top: 30px;
 }
 
