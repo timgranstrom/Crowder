@@ -37,5 +37,10 @@
 .user-displayName{
   text-align: center;
   font-style: italic;
-
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+  background-color: #ff9908;
+}
+.nav-pills > li > a{
+  color: #b86b13;
 }
