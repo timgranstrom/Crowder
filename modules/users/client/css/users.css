@@ -44,3 +44,9 @@
 .nav-pills > li > a{
   color: #b86b13;
 }
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover,
+.pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+  background-color:#ff9908;
+  border-color: #ec8e07;
+}
