@@ -53,4 +53,12 @@ a:hover .header-profile-image {
   color: #c8c8c8;
   background-color: transparent;
 }
+.search-box{
+  background-color: #fdfdfe;
+  border:solid 1px #BFBDBD;
+  color: #000000;
+  margin-top: 1em;
 
+
+  border-radius:5px;
+}

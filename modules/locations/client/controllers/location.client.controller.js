@@ -7,8 +7,12 @@ locationsApp.controller('LocationController', ['$scope', '$state', 'Authenticati
 
         $scope.authentication = Authentication;
 
-        $scope.listLocation = function () {
-            $scope.location = Locations.query();
+        $scope.listLocation = function (inputCountry) {
+           // $scope.location = Locations.query();
+            $scope.locations = Locations.query({country:inputCountry});
+           // $scope.place= locations;
+
+           // console.log(Locations.query());
         };
 
         $scope.$on('updateGetLocation', function (event, args) {
