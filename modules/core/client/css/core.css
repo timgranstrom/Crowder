@@ -1,8 +1,8 @@
 .content {
-  margin-top: 50px;
+    margin-top: 50px;
 }
 .undecorated-link:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 [ng\:cloak],
 [ng-cloak],
@@ -10,55 +10,49 @@
 [x-ng-cloak],
 .ng-cloak,
 .x-ng-cloak {
-  display: none !important;
+    display: none !important;
 }
 .ng-invalid.ng-dirty {
-  border-color: #FA787E;
+    border-color: #FA787E;
 }
 .ng-valid.ng-dirty {
-  border-color: #78FA89;
+    border-color: #78FA89;
 }
 .header-profile-image {
-  opacity: 0.8;
-  height: 28px;
-  width: 28px;
-  border-radius: 50%;
-  margin-right: 5px;
+    opacity: 0.8;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    margin-right: 5px;
 }
 .open .header-profile-image,
 a:hover .header-profile-image {
-  opacity: 1;
+    opacity: 1;
 }
 .user-header-dropdown-toggle {
-  padding-top: 11px !important;
-  padding-bottom: 11px !important;
+    padding-top: 11px !important;
+    padding-bottom: 11px !important;
 }
 
-  .header-background {
+.header-background {
     background-color: #ff9908;
-  }
+}
 .navbar-inverse .navbar-brand {
-  color: #fff;
+    color: #fff;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #c8c8c8;
-  background-color: transparent;
+    color: #c8c8c8;
+    background-color: transparent;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #fff;
+    color: #fff;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #c8c8c8;
-  background-color: transparent;
+    color: #c8c8c8;
+    background-color: transparent;
 }
-.search-box{
-  background-color: #fdfdfe;
-  border:solid 1px #BFBDBD;
-  color: #000000;
-  margin-top: 1em;
-
-
-  border-radius:5px;
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .active > a{
+    background-image: linear-gradient(to bottom, #ff9908 0%, #ff9908 100%)
 }
