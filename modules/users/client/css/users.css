@@ -39,3 +39,9 @@
   font-style: italic;
 
 }
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover,
+.pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+  background-color:#ff9908;
+  border-color: #ec8e07;
+}
