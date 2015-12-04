@@ -6,7 +6,7 @@ angular.module('core.admin').run(['Menus',
       title: 'Admin',
       state: 'admin',
       type: 'dropdown',
-      roles: ['admin','user'] // added user during develop process
+      roles: ['admin'] // added user during develop process
     });
   }
 ]);
