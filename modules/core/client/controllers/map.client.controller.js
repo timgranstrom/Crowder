@@ -20,28 +20,22 @@ angular.module('core')
                 request.onreadystatechange = function (string) {
                     if (request.readyState === 4 && request.status === 200) {
                         var data = JSON.parse(request.responseText);
-                       // var city = data.results[5];
-                      //  var region = data.results[6];
-                       // var country = data.results[6];
 
-                        var municipalityAndCountry  = data.results[5].formatted_address;
-                        var region  = data.results[6].formatted_address;
+                        var foundMunicipalityAndCountry  = data.results[5].formatted_address;
+                        var foundRegion  = data.results[6].formatted_address;
+
+                        var municipality = foundMunicipalityAndCountry.split(',')[0];
+                        var region = foundRegion.split(',')[0];
+                        var country = foundMunicipalityAndCountry.split(',')[1];
+                        $scope.municipality = municipality;
+                        $scope.region = region;
+                        $scope.country = country;
 
 
-                        $scope.municipality = municipalityAndCountry.split(',')[0];
-                        $scope.region = region.split(',')[0];
-                        $scope.country = region.split(',')[1];
+                        $scope.ready=true;
                         $scope.$digest();
-
-
-
-
-                       // window.location = '/cities/' + $scope.location;
-                        //window.location.replace('/cities/' + $scope.location);
-                        //if(confirm('Is '+ $scope.location + ' your current city?')){
-                       // $state.go('city',{cityId: $scope.location});
-
-                    //}
+                        $scope.ready=false;
+                        $scope.$digest();
                     }
                 };
                 request.send();

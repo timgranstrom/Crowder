@@ -1,3 +1,5 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <div class="header-background">
     <div class="container " data-ng-controller="HeaderController">
         <div class="navbar-header">
@@ -9,8 +11,69 @@
             </button>
             <a data-ui-sref="home" class="navbar-brand ">Crowder</a>
             <a data-ui-sref="posts" class="navbar-brand">Walls</a>
-        </div>
+
+
+
+
+</div>
+                <!--<div class="form-group">-->
+                    <!--<input data-ng-change="listLocation(inputMunicipality)" placeholder="Search place" type="text"-->
+                           <!--ng-model="inputMunicipality" typeahead-editable="true"-->
+                           <!--typeahead="place.municipality +' '+ place.region +' '+ place.country for place in place | filter:$viewValue | limitTo:8"-->
+                           <!--typeahead-on-select="onSelect($item.municipality+$item.region+$item.country)"-->
+
+                           <!--class="form-control" typeahead-min-length="1" typeahead-no-results="noResults">-->
+
+                    <!--<section ng-controller="MapController">-->
+                        <!--<button class="btn btn-success" type="button" ng-click="getPosition()">-->
+                            <!--<span class="glyphicon glyphicon-map-marker"></span>-->
+                        <!--</button>-->
+
+                    <!--</section>-->
+
+                    <!--<span ng-if="noResults" uib-dropdown uib-dropdown-toggle auto-close="enabled" is-open="true">-->
+                        <!--<ul class="uib-dropdown-menu">-->
+                            <!--<li><a href>Create</a></li>-->
+                        <!--</ul>-->
+                     <!--</span>-->
+                <!--</div>-->
+
+            <!--</div>-->
+
         <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+
+            <a data-ng-controller="MapController" >
+                <button class="btn btn-success" type="button" ng-click="getPosition()">
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                </button>
+            </a>
+
+            <a data-ng-controller="LocationController" class="form-group" >
+
+                <input  class="search-box"  type="text" ng-model="inputMunicipality" placeholder="Search"
+                        typeahead="location.municipality +' '+ location.region +' '+ location.country for location in listLocation($viewValue)"  typeahead-min-length="2" typeahead-no-results="noResults"  >
+
+            </a>
+
+                <div class="container" >
+                    <div class="dropdown" ng-show="true">
+                        <button class="dropdown-toggle"  data-toggle="dropdown">Dropdown Example
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">HTML</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
             <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
                 <li data-ng-repeat="item in menu.items | orderBy: 'position'"
                     data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.type"

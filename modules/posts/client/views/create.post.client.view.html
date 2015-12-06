@@ -4,7 +4,7 @@
         <button class="circle-button fixed-button" data-toggle="modal" data-target="#postModal"> +</button>
     </div>
 </div>
-<div class="row" data-ng-controller="PostsController" data-ng-init="listPosts()">
+<div class="row" data-ng-controller="PostsController" data-ng-init="listPosts(user.activeLocation)">
     <div class="col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4 col-lg-offset-3 col-lg-6">
 
         <div class="list-group">
@@ -12,7 +12,7 @@
                 <div class="post-head">
                     <img src="{{post.creator.profileImageURL}}" class="img-thumbnail post-profile-image" width="50">
 
-                    <h4 class="list-group-item-heading post-username">{{post.creator.username}}</h4>
+                    <h4 class="list-group-item-heading post-username">{{post.creator.username}} </h4>
                 </div>
 
                 <p class="list-group-item-text" data-ng-bind="post.content"></p>

@@ -56,4 +56,17 @@ a:hover .header-profile-image {
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .active > a{
   background-image: linear-gradient(to bottom, #ff9908 0%, #ff9908 100%)
 }
-
+.search-box {
+    background-color: #fdfdfe;
+    border: solid 1px #BFBDBD;
+    color: #000000;
+    margin-top: 1em;
+    border-radius:5px;
+}
+a{
+  color: black;
+}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus{
+  background-color: #ff9908;
+  background-image: linear-gradient(to bottom, #ff9908 0%, #ff9908 100%);
+}

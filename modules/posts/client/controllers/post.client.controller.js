@@ -4,19 +4,21 @@ var postsApp = angular.module('posts');
 
 postsApp.controller('PostsController', ['$scope', '$state', 'Authentication', 'Posts',
     function ($scope, $state, Authentication, Posts) {
+        $scope.user = Authentication.user;
 
         $scope.authentication = Authentication;
 
-        $scope.listPosts = function () {
-            $scope.posts = Posts.query();
+        $scope.listPosts = function (activeLocation) {
+           // $scope.posts = Posts.query();
+            $scope.posts = Posts.query({location:activeLocation});
         };
 
         $scope.listUserPosts = function() {
             $scope.posts = Posts.query({'creator':$scope.user._id});
         };
 
-        $scope.$on('updateGetPosts', function (event, args) {
-            $scope.listPosts();
+        $scope.$on('updateGetPosts', function (event, args ) {
+            $scope.listPosts(Authentication.user.activeLocation);
         });
 
     }]);
