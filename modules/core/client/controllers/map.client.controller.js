@@ -2,43 +2,37 @@
 
 angular.module('core')
 
-    .controller('MapController',['$scope','$state', function($scope,$state) {
+    .controller('MapController',['$scope','$http','$state', function($scope,$http, $state) {
 
 
 
         $scope.getPosition = function () {
-
             function displayLocation(latitude, longitude) {
-                var request = new XMLHttpRequest();
-
-                var method = 'GET';
-                var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true';
-                var async = true;
-
-
-                request.open(method, url, async);
-                request.onreadystatechange = function (string) {
-                    if (request.readyState === 4 && request.status === 200) {
-                        var data = JSON.parse(request.responseText);
-
-                        var foundMunicipalityAndCountry  = data.results[5].formatted_address;
-                        var foundRegion  = data.results[6].formatted_address;
-
-                        var municipality = foundMunicipalityAndCountry.split(',')[0];
-                        var region = foundRegion.split(',')[0];
-                        var country = foundMunicipalityAndCountry.split(',')[1];
-                        $scope.municipality = municipality;
-                        $scope.region = region;
-                        $scope.country = country;
-
-
-                        $scope.ready=true;
-                        $scope.$digest();
-                        $scope.ready=false;
-                        $scope.$digest();
+                return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
+                    params: {
+                        sensor: false,
+                        latlng: latitude+','+longitude
                     }
-                };
-                request.send();
+                }).then(function (response) {
+                    console.log(response);
+                    if (response.data.results) {
+                        var locationObject = response.data.results[1];
+                                var municipality;
+                                var region;
+                                var country;
+                                    municipality = locationObject.address_components[2].long_name;
+                                    region = locationObject.address_components[3].long_name;
+                                    country = locationObject.address_components[4].long_name;
+                            $scope.municipality = municipality;
+                            $scope.region = region;
+                            $scope.country = country;
+                            var locationData = [];
+                        locationData.push({municipality:municipality,region:region,country:country});
+                            //$scope.$digest();
+                        $scope.$root.$broadcast('setLocation',locationData);
+
+                    }
+                });
             }
 
             var successCallback = function (position) {

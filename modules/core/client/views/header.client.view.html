@@ -41,29 +41,27 @@
             <!--</div>-->
 
         <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-
-            <a data-ng-controller="MapController" >
-                <button class="btn btn-success" type="button" ng-click="getPosition()">
-                    <span class="glyphicon glyphicon-map-marker"></span>
-                </button>
-            </a>
-
             <a data-ng-controller="LocationController" class="form-group" >
 
+                <button class="btn btn-success" type="button" ng-click="getGeoPosition()">
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                </button>
+
                 <input  class="search-box"  type="text" ng-model="inputMunicipality" placeholder="Search"
-                        typeahead="location.municipality +' '+ location.region +' '+ location.country for location in listLocation($viewValue)"  typeahead-min-length="2" typeahead-no-results="noResults"  >
+                        typeahead="location for location in listMapsApiLocation($viewValue)"
+                        typeahead-min-length="2" typeahead-no-results="noResults"  >
 
             </a>
 
-                <div class="container" >
-                    <div class="dropdown" ng-show="true">
-                        <button class="dropdown-toggle"  data-toggle="dropdown">Dropdown Example
-                            <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <!--<div class="container" >-->
+                    <!--<div class="dropdown" ng-show="true">-->
+                        <!--<button class="dropdown-toggle"  data-toggle="dropdown">Dropdown Example-->
+                            <!--<span class="caret"></span></button>-->
+                        <!--<ul class="dropdown-menu">-->
+                            <!--<li><a href="#">HTML</a></li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                <!--</div>-->
 
 
 
