@@ -11,22 +11,15 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       $stateProvider
           .state('home', {
               url: '/',
-              templateUrl: 'modules/core/views/home.client.view.html'
-              //data: {
-              //    roles: ['user','admin']
-              //}
+              templateUrl: 'modules/core/views/home.client.view.html',
+              data: {
+                  roles: ['user','admin']
+              }
           })
           .state('not-found', {
               url: '/not-found',
               templateUrl: 'modules/core/views/404.client.view.html'
-          })
-
-          .state('city', {
-              url: '/cities/:cityId',
-              templateUrl: 'modules/core/views/city.template.client.view.html',
-              data: {
-                  roles: ['user','admin']
-              }
           });
+
 
   }]);

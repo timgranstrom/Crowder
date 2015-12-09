@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('EditProfileController', ['$scope','$rootScope' ,'$state', '$http', '$location', 'Users', 'Authentication',
-    function ($scope, $rootScope, $state, $http, $location, Users, Authentication) {
+angular.module('users').controller('EditProfileController', ['$scope','$rootScope' ,'$state', '$http','Users','Authentication',
+    function ($scope, $rootScope, $state, $http, Users, Authentication) {
         $scope.user = Authentication.user;
 
         // Update a user profile
@@ -24,26 +24,12 @@ angular.module('users').controller('EditProfileController', ['$scope','$rootScop
 
 
         $scope.removeUser = function () {
-            // if (confirm('Are you sure you want to delete you from the site?')) {
-            //if (user) {
             var user = new Users($scope.user);
             user.$remove();
-            // alert('Your account have been removed!');
             window.location.href = '/api/auth/signout';
 
 
-            //$state.go('home');
-            //      //$scope.users.splice($scope.users.indexOf(user), 1);
-            //    //} else {
-            //      //$scope.user.$delete(function () {
-            //      //  $state.go('home');
-            //      //});
-            //}
-            //   }
         };
-        $rootScope.$on('updateUser', function (event, args) {
-            console.log('UPDATE USER');
-            $scope.updateUserProfile(true);
-        });
+
     }
 ]);

@@ -70,3 +70,9 @@ a{
   background-color: #ff9908;
   background-image: linear-gradient(to bottom, #ff9908 0%, #ff9908 100%);
 }
+
+@media (max-width: 767px){
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #fdfdfe;
+  }
+  }
