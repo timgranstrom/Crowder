@@ -63,11 +63,8 @@ exports.create = function (req, res) {
  * List of posts sorted by creation
  */
 exports.list = function (req, res) {
-<<<<<<< HEAD
-    Post.find(req.query).sort('-created').populate('creator', 'profileImageURL username _id').populate('location','_id municipality').exec(function (err, posts) {
-=======
-    Post.find(req.query).sort('-created').populate('creator', 'profileImageURL username _id').populate('location', '_id').populate('upVoters','_id').populate('downVoters','_id').exec(function (err, posts) {
->>>>>>> refs/remotes/origin/sprint
+
+    Post.find(req.query).sort('-created').populate('creator', 'profileImageURL username _id').populate('location', '_id municipality').populate('upVoters','_id').populate('downVoters','_id').exec(function (err, posts) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
