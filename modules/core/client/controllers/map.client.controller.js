@@ -2,49 +2,37 @@
 
 angular.module('core')
 
-    .controller('MapController',['$scope','$state', function($scope,$state) {
+    .controller('MapController',['$scope','$http','$state', function($scope,$http, $state) {
 
 
 
         $scope.getPosition = function () {
-
             function displayLocation(latitude, longitude) {
-                var request = new XMLHttpRequest();
-
-                var method = 'GET';
-                var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true';
-                var async = true;
-
-
-                request.open(method, url, async);
-                request.onreadystatechange = function (string) {
-                    if (request.readyState === 4 && request.status === 200) {
-                        var data = JSON.parse(request.responseText);
-                       // var city = data.results[5];
-                      //  var region = data.results[6];
-                       // var country = data.results[6];
-
-                        var municipalityAndCountry  = data.results[5].formatted_address;
-                        var region  = data.results[6].formatted_address;
-
-
-                        $scope.municipality = municipalityAndCountry.split(',')[0];
-                        $scope.region = region.split(',')[0];
-                        $scope.country = region.split(',')[1];
-                        $scope.$digest();
-
-
-
-
-                       // window.location = '/cities/' + $scope.location;
-                        //window.location.replace('/cities/' + $scope.location);
-                        //if(confirm('Is '+ $scope.location + ' your current city?')){
-                       // $state.go('city',{cityId: $scope.location});
-
-                    //}
+                return $http.get('//maps.googleapis.com/maps/api/geocode/json', {
+                    params: {
+                        sensor: false,
+                        latlng: latitude+','+longitude
                     }
-                };
-                request.send();
+                }).then(function (response) {
+                    console.log(response);
+                    if (response.data.results) {
+                        var locationObject = response.data.results[1];
+                                var municipality;
+                                var region;
+                                var country;
+                                    municipality = locationObject.address_components[2].long_name;
+                                    region = locationObject.address_components[3].long_name;
+                                    country = locationObject.address_components[4].long_name;
+                            $scope.municipality = municipality;
+                            $scope.region = region;
+                            $scope.country = country;
+                            var locationData = [];
+                        locationData.push({municipality:municipality,region:region,country:country});
+                            //$scope.$digest();
+                        $scope.$root.$broadcast('setLocation',locationData);
+
+                    }
+                });
             }
 
             var successCallback = function (position) {

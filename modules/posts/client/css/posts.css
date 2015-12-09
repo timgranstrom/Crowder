@@ -7,9 +7,11 @@
 .margin-height {
     margin-bottom: 110px;
     margin-top: 30px;
+
 }
 
 .circle-button {
+
     width: 70px;
     height: 70px;
     line-height: 50px;
@@ -62,4 +64,10 @@
 }
 .button:active{
     background-color: #ff9908;
+}
+
+.posts-municipality{
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 80px;
 }
