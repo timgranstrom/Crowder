@@ -17,7 +17,6 @@ var userAlreadyExist = function (userId, array) {
     var userExist = false;
     array.forEach(function (arrayUserId) {
         if (arrayUserId.equals(userId)) {
-            console.log('USER ALREADY EXIST');
             userExist = true;
             return;
         }
@@ -37,7 +36,6 @@ var removeUserFromArray = function (userId, array) {
         }
         i++;
     });
-    console.log(newArray);
     return newArray;
 };
 
