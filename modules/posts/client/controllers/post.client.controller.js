@@ -11,8 +11,8 @@ postsApp.controller('PostsController', ['$scope', '$state', 'Authentication', 'P
             $scope.posts = Posts.query();
         };
 
-        $scope.listUserPosts = function() {
-            $scope.posts = Posts.query({'creator':$scope.user._id});
+        $scope.listUserPosts = function () {
+            $scope.posts = Posts.query({'creator': $scope.user._id});
         };
 
         $scope.$on('updateGetPosts', function (event, args) {
@@ -21,12 +21,12 @@ postsApp.controller('PostsController', ['$scope', '$state', 'Authentication', 'P
 
     }]);
 
-postsApp.controller('PostsCreateController', ['$scope', '$state', 'Authentication', 'Posts',
-    function ($scope, $state, Authentication, Posts) {
+postsApp.controller('PostsCreateController', ['$scope', '$state', 'Authentication', 'Posts', 'Post',
+    function ($scope, $state, Authentication, Posts, Post) {
         $scope.authentication = Authentication;
         $scope.left = function () {
             var content = $scope.content;
-            if(content){
+            if (content) {
                 return 150 - content.length;
             }
         };
@@ -40,6 +40,28 @@ postsApp.controller('PostsCreateController', ['$scope', '$state', 'Authenticatio
             post.$create(function (response) {
                 $scope.$root.$broadcast('updateGetPosts');
                 $scope.content = '';
+            }, function (errorResponse) {
+                this.error = errorResponse.data.message;
+            });
+
+        };
+
+        $scope.upVote = function (post) {
+            var updatePost = new Post({
+                postId: post._id
+            });
+            updatePost.$upVote(function (response) {
+            }, function (errorResponse) {
+                this.error = errorResponse.data.message;
+            });
+
+        };
+
+        $scope.downVote = function (post) {
+            var updatePost = new Post({
+                postId: post._id
+            });
+            updatePost.$downVote(function (response) {
             }, function (errorResponse) {
                 this.error = errorResponse.data.message;
             });

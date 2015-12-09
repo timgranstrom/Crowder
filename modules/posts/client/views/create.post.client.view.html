@@ -21,6 +21,15 @@
                     <hr class="post-hr">
                     <p class="list-group-item-text" style="font-size:x-small">Posted {{post.created}}</p>
                 </div>
+
+                <div data-ng-controller="PostsCreateController">
+                    <button type="button" class="btn btn-warning"
+                            ng-click="upVote(post)" data-dismiss="modal">upvote
+                    </button>
+                    <button type="button" class="btn btn-warning"
+                            ng-click="downVote(post)" data-dismiss="modal">downvote
+                    </button>
+                </div>
             </div>
 
         </div>
