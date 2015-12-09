@@ -14,14 +14,14 @@ var path = require('path'),
  * Internal function to check if user already exist within an array
  */
 var userAlreadyExist = function (userId, array) {
-        if (array.length > 0) {
-            for (var i in array) {
-                if (array[i].equals(userId)) {
-                    return true;
-                }
-            }
+    var userExist = false;
+    array.forEach(function (arrayUserId) {
+        if (arrayUserId.equals(userId)) {
+            userExist = true;
+            return;
         }
-    return false;
+    });
+    return userExist;
 };
 
 /**
@@ -29,14 +29,13 @@ var userAlreadyExist = function (userId, array) {
  */
 var removeUserFromArray = function (userId, array) {
     var newArray = array;
-    if (array.length > 0) {
-        for (var i in array) {
-            if (array[i].equals(userId)) {
-                newArray.splice(i, 1);
-                break;
-            }
+    var i = 0;
+    array.forEach(function (arrayUserId) {
+        if (arrayUserId.equals(userId)) {
+            newArray.splice(i, 1);
         }
-    }
+        i++;
+    });
     return newArray;
 };
 
@@ -63,7 +62,8 @@ exports.create = function (req, res) {
  * List of posts sorted by creation
  */
 exports.list = function (req, res) {
-    Post.find(req.query).sort('-created').populate('creator', 'profileImageURL username _id').populate('location', '_id').populate('upVoters','_id').populate('downVoters','_id').exec(function (err, posts) {
+
+    Post.find(req.query).sort('-created').populate('creator', 'profileImageURL username _id').populate('location', '_id municipality').populate('upVoters', '_id').populate('downVoters', '_id').exec(function (err, posts) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -97,10 +97,10 @@ exports.upVote = function (req, res) {
         post.downVoters = removeUserFromArray(req.user._id, post.downVoters);
     }
 
-    Post.findByIdAndUpdate(post._id, post,
-        function (err, updatedPost) {
+    Post.findByIdAndUpdate(post._id, post, {new: true}).populate('creator', 'profileImageURL username _id').populate('location', '_id municipality')
+        .exec(function (err, updatedPost) {
             if (err) return console.log(err);
-            return res.sendStatus(202);
+            return res.status(202).json(updatedPost);
         });
 };
 
@@ -120,10 +120,10 @@ exports.downVote = function (req, res) {
         post.upVoters = removeUserFromArray(req.user._id, post.upVoters);
     }
 
-    Post.findByIdAndUpdate(post._id, post,
-        function (err, updatedPost) {
+    Post.findByIdAndUpdate(post._id, post, {new: true}).populate('creator', 'profileImageURL username _id').populate('location', '_id municipality')
+        .exec(function (err, updatedPost) {
             if (err) return console.log(err);
-            return res.sendStatus(202);
+            return res.status(202).json(updatedPost);
         });
 };
 
@@ -143,7 +143,6 @@ exports.postByID = function (req, res, next, id) {
         } else if (!post) {
             return next(new Error('Failed to load Post ' + id));
         }
-        //return res.send(post);
         req.model = post;
         next();
     });
