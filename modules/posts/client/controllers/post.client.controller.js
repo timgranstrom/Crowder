@@ -54,7 +54,6 @@ postsApp.controller('PostsCreateController', ['$scope', '$state', 'Authenticatio
             }, function (errorResponse) {
                 this.error = errorResponse.data.message;
             });
-
         };
 
         $scope.downVote = function (post) {
