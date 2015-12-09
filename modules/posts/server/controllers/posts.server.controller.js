@@ -14,13 +14,13 @@ var path = require('path'),
  * Internal function to check if user already exist within an array
  */
 var userAlreadyExist = function (userId, array) {
-        if (array.length > 0) {
-            for (var i in array) {
-                if (array[i].equals(userId)) {
-                    return true;
-                }
+    if (array.length > 0) {
+        for (var i in array) {
+            if (array[i].equals(userId)) {
+                return true;
             }
         }
+    }
     return false;
 };
 
@@ -64,7 +64,7 @@ exports.create = function (req, res) {
  */
 exports.list = function (req, res) {
 
-    Post.find(req.query).sort('-created').populate('creator', 'profileImageURL username _id').populate('location', '_id municipality').populate('upVoters','_id').populate('downVoters','_id').exec(function (err, posts) {
+    Post.find(req.query).sort('-created').populate('creator', 'profileImageURL username _id').populate('location', '_id municipality').populate('upVoters', '_id').populate('downVoters', '_id').exec(function (err, posts) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -98,10 +98,10 @@ exports.upVote = function (req, res) {
         post.downVoters = removeUserFromArray(req.user._id, post.downVoters);
     }
 
-    Post.findByIdAndUpdate(post._id, post,
-        function (err, updatedPost) {
+    Post.findByIdAndUpdate(post._id, post,{new: true}).populate('creator', 'profileImageURL username _id').populate('location', '_id municipality')
+        .exec(function (err,updatedPost) {
             if (err) return console.log(err);
-            return res.sendStatus(202);
+            return res.status(202).json(updatedPost);
         });
 };
 
@@ -121,10 +121,10 @@ exports.downVote = function (req, res) {
         post.upVoters = removeUserFromArray(req.user._id, post.upVoters);
     }
 
-    Post.findByIdAndUpdate(post._id, post,
-        function (err, updatedPost) {
+    Post.findByIdAndUpdate(post._id, post,{new: true}).populate('creator', 'profileImageURL username _id').populate('location', '_id municipality')
+        .exec(function (err,updatedPost) {
             if (err) return console.log(err);
-            return res.sendStatus(202);
+            return res.status(202).json(updatedPost);
         });
 };
 
@@ -144,7 +144,6 @@ exports.postByID = function (req, res, next, id) {
         } else if (!post) {
             return next(new Error('Failed to load Post ' + id));
         }
-        //return res.send(post);
         req.model = post;
         next();
     });

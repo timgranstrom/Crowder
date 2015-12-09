@@ -198,8 +198,6 @@ locationsApp.controller('LocationController', ['$scope', '$http', '$state', 'Aut
 
         $scope.getLocation = function (locationData) {
 
-            //console.log('QUERY DATA');
-            //console.log(locationData);
             Locations.query(locationData, function (result) {
                 if (result.length === 0) {
                     $scope.$root.$broadcast('createLocation', locationData);
@@ -219,6 +217,10 @@ locationsApp.controller('LocationController', ['$scope', '$http', '$state', 'Aut
                 }
             });
 
+        };
+
+        $scope.getLocationById = function(locationId){
+            $scope.locationCity = Locations.query({'_id':locationId});
         };
 
         $scope.$on('setLocation', function (event, args) {
