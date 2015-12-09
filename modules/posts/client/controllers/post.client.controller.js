@@ -4,13 +4,11 @@ var postsApp = angular.module('posts');
 
 postsApp.controller('PostsController', ['$scope', '$state', 'Authentication', 'Posts',
     function ($scope, $state, Authentication, Posts) {
-        $scope.user = Authentication.user;
 
         $scope.authentication = Authentication;
 
-        $scope.listPosts = function (activeLocation) {
-            // $scope.posts = Posts.query();
-            $scope.posts = Posts.query({location: activeLocation});
+        $scope.listPosts = function () {
+            $scope.posts = Posts.query();
         };
 
         $scope.listUserPosts = function () {
@@ -18,15 +16,14 @@ postsApp.controller('PostsController', ['$scope', '$state', 'Authentication', 'P
         };
 
         $scope.$on('updateGetPosts', function (event, args) {
-            $scope.listPosts(Authentication.user.activeLocation);
+            $scope.listPosts();
         });
 
     }]);
 
-postsApp.controller('PostsCreateController', ['$scope', '$state', 'Authentication', 'Posts',
-    function ($scope, $state, Authentication, Posts) {
+postsApp.controller('PostsCreateController', ['$scope', '$state', 'Authentication', 'Posts', 'Post',
+    function ($scope, $state, Authentication, Posts, Post) {
         $scope.authentication = Authentication;
-
         $scope.left = function () {
             var content = $scope.content;
             if (content) {
@@ -36,14 +33,34 @@ postsApp.controller('PostsCreateController', ['$scope', '$state', 'Authenticatio
 
         $scope.create = function () {
             var post = new Posts({
-                content: this.content,
-                location: Authentication.user.activeLocation
+                content: this.content
             });
 
             //refetch the updated list of posts
             post.$create(function (response) {
                 $scope.$root.$broadcast('updateGetPosts');
                 $scope.content = '';
+            }, function (errorResponse) {
+                this.error = errorResponse.data.message;
+            });
+
+        };
+
+        $scope.upVote = function (post) {
+            var updatePost = new Post({
+                postId: post._id
+            });
+            updatePost.$upVote(function (response) {
+            }, function (errorResponse) {
+                this.error = errorResponse.data.message;
+            });
+        };
+
+        $scope.downVote = function (post) {
+            var updatePost = new Post({
+                postId: post._id
+            });
+            updatePost.$downVote(function (response) {
             }, function (errorResponse) {
                 this.error = errorResponse.data.message;
             });
