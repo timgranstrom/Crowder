@@ -14,14 +14,15 @@ var path = require('path'),
  * Internal function to check if user already exist within an array
  */
 var userAlreadyExist = function (userId, array) {
-    if (array.length > 0) {
-        for (var i in array) {
-            if (array[i].equals(userId)) {
-                return true;
-            }
+    var userExist = false;
+    array.forEach(function (arrayUserId) {
+        if (arrayUserId.equals(userId)) {
+            console.log('USER ALREADY EXIST');
+            userExist = true;
+            return;
         }
-    }
-    return false;
+    });
+    return userExist;
 };
 
 /**
@@ -29,14 +30,14 @@ var userAlreadyExist = function (userId, array) {
  */
 var removeUserFromArray = function (userId, array) {
     var newArray = array;
-    if (array.length > 0) {
-        for (var i in array) {
-            if (array[i].equals(userId)) {
-                newArray.splice(i, 1);
-                break;
-            }
+    var i = 0;
+    array.forEach(function (arrayUserId) {
+        if (arrayUserId.equals(userId)) {
+            newArray.splice(i, 1);
         }
-    }
+        i++;
+    });
+    console.log(newArray);
     return newArray;
 };
 
@@ -98,8 +99,8 @@ exports.upVote = function (req, res) {
         post.downVoters = removeUserFromArray(req.user._id, post.downVoters);
     }
 
-    Post.findByIdAndUpdate(post._id, post,{new: true}).populate('creator', 'profileImageURL username _id').populate('location', '_id municipality')
-        .exec(function (err,updatedPost) {
+    Post.findByIdAndUpdate(post._id, post, {new: true}).populate('creator', 'profileImageURL username _id').populate('location', '_id municipality')
+        .exec(function (err, updatedPost) {
             if (err) return console.log(err);
             return res.status(202).json(updatedPost);
         });
@@ -121,8 +122,8 @@ exports.downVote = function (req, res) {
         post.upVoters = removeUserFromArray(req.user._id, post.upVoters);
     }
 
-    Post.findByIdAndUpdate(post._id, post,{new: true}).populate('creator', 'profileImageURL username _id').populate('location', '_id municipality')
-        .exec(function (err,updatedPost) {
+    Post.findByIdAndUpdate(post._id, post, {new: true}).populate('creator', 'profileImageURL username _id').populate('location', '_id municipality')
+        .exec(function (err, updatedPost) {
             if (err) return console.log(err);
             return res.status(202).json(updatedPost);
         });
