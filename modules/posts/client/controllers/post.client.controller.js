@@ -9,8 +9,8 @@ postsApp.controller('PostsController', ['$scope', '$state', 'Authentication', 'P
 
 
         $scope.listPosts = function (activeLocation) {
-            if(activeLocation !== undefined){
-            $scope.posts = Posts.query({location: activeLocation});
+            if (activeLocation !== undefined) {
+                $scope.posts = Posts.query({location: activeLocation});
             }
         };
 
@@ -85,6 +85,10 @@ postsApp.controller('PostsCreateController', ['$scope', '$state', 'Authenticatio
             }, function (errorResponse) {
                 this.error = errorResponse.data.message;
             });
+        };
+
+        $scope.calculateVoteDifference = function (post) {
+            return post.upVoters.length - post.downVoters.length;
         };
 
     }]);

@@ -1,0 +1,60 @@
+<div class="post-head">
+    <img src="{{post.creator.profileImageURL}}" class="img-thumbnail post-profile-image" width="50">
+
+    <h4 class="list-group-item-heading post-username">{{post.creator.username}}</h4>
+</div>
+
+<p class="list-group-item-text text-content" data-ng-bind="post.content"></p>
+
+<div data-ng-controller="PostsCreateController">
+    <div class="vote-button">
+        <button type="button" class="btn btn-warning btn-xs"
+                ng-click="upVote(post)">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </button>
+
+        <span class="vote-text"> {{calculateVoteDifference(post)}}</span>
+
+        <button type="button" class="btn btn-warning btn-xs" ng-click="downVote(post)">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+    </div>
+</div>
+<p></p>
+
+<p class="list-group-item-text bottom-text">Posted {{post.created}} in
+    {{post.location.municipality}}</p>
+
+<hr class="post-hr">
+<div>
+    <div>
+        <div data-ng-controller="CommentsController"
+             data-ng-init="post.comments = listCommentsOfPost(post._id,1)">
+
+            <div class="list-group-item post" data-ng-repeat="comment in post.comments">
+                <img src="{{comment.creator.profileImageURL}}" class="img-thumbnail post-profile-image"
+                     width="40">
+
+                <p class="list-group-item-heading comment-username">{{comment.creator.username}}</p>
+
+                <p class="list-group-item-text comment-content-text" data-ng-bind="comment.content"></p>
+
+                <p class="list-group-item-text comment-bottom-text comment-bottom"> Comment posted
+                    {{comment.created}}</p>
+            </div>
+
+            <form ng-submit="create()">
+
+                <input class="comment-box" type="text" name="comment" data-ng-model="comment"
+                       placeholder="Write a comment" maxlength="100" minlength="5">
+
+                <button type="button" class="btn btn-warning"
+                        data-ng-click="post.comments = listCommentsOfPost(post._id)">Load more
+                </button>
+
+                <button type="submit" class="btn btn-warning"> Comment
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
