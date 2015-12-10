@@ -1,29 +1,22 @@
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <div ng-controller="LocationsCreateController"></div>
 <div class="header-background">
     <div class="container " data-ng-controller="HeaderController">
         <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar "></span>
-                <span class="icon-bar "></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a data-ui-sref="home" class="navbar-brand ">Crowder</a>
 
+            <a data-ui-sref="home" class="navbar-brand ">Crowder</a>
 
         </div>
 
 
         <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
             <span data-ng-show="authentication.user">
-            <a data-ng-controller="LocationController" class="form-group" >
+            <a data-ng-controller="LocationController" class="form-group">
 
 
-                <input  class="search-box"  type="text" ng-model="inputMunicipality" placeholder="Search"
-                        typeahead="location for location in listMapsApiLocation($viewValue)"
-                        typeahead-min-length="4"  typeahead-on-select="onClicks($item)" >
+                <input class="search-box" type="text" ng-model="inputMunicipality" placeholder="Search"
+                       typeahead="location for location in listMapsApiLocation($viewValue)"
+                       typeahead-min-length="4" typeahead-on-select="onClicks($item)">
 
                 <button class="btn btn-success" type="button" ng-click="getGeoPosition()">
                     <span class="glyphicon glyphicon-map-marker"></span>

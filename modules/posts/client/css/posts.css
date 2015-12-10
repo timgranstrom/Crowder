@@ -51,7 +51,8 @@
 .post-hr{
     margin-top:5px;
     margin-bottom:5px;
-    border-top:1px solid #ff9908
+    border-top:1px solid #ff9908;
+
 }
 
 .post-profile-image{
@@ -61,6 +62,9 @@
 
 .post-username{
     display:inline;
+    font-family: inherit;
+    word-wrap: break-word;
+    font-size: 19px;
 }
 .button:active{
     background-color: #ff9908;
@@ -68,6 +72,51 @@
 
 .posts-municipality{
     text-align: center;
-    font-family: "Times New Roman", Times, serif;
+    font-family: inherit;
     font-size: 80px;
+}
+.vote-button{
+    text-align:right;
+    margin-top:0;
+}
+.text-font{
+    font-family: inherit;
+}
+.text-content{
+    font-family: inherit;
+    word-wrap: break-word;
+    font-size: 18px;
+}
+.bottom-text{
+
+    font-family: inherit;
+    font-size: 11px;
+    text-align:right;
+}
+.comment-username{
+    display:inline;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+}
+.comment-bottom-text{
+    font-family: inherit;
+    font-size: 11px;
+    text-align:right;
+}
+.comment-content-text{
+    font-family: inherit;
+    word-wrap: break-word;
+    font-size: 14px;
+}
+.comment-bottom{
+    margin-top:1px;
+}
+.comment-box {
+    background-color: #fdfdfe;
+    border: solid 1px #ff9908;
+    color: #000000;
+    border-radius:5px;
+    height:38px;
+    width:63%;
 }

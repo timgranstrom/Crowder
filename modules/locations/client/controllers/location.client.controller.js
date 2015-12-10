@@ -220,7 +220,9 @@ locationsApp.controller('LocationController', ['$scope', '$http', '$state', 'Aut
         };
 
         $scope.getLocationById = function(locationId){
-            $scope.locationCity = Locations.query({'_id':locationId});
+            if(Authentication.user.activeLocation!==undefined) {
+                $scope.locationCity = Locations.query({'_id': locationId});
+            }
         };
 
         $scope.$on('setLocation', function (event, args) {
