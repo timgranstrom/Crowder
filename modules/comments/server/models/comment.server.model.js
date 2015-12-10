@@ -17,6 +17,7 @@ var PostSchema = mongoose.model('Post');
 var CommentSchema = new Schema({
     content: {
         type: String,
+        maxlength: 100,
         trim: true,
         required: true
     },
