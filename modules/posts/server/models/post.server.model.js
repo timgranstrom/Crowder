@@ -16,6 +16,7 @@ var UserSchema = mongoose.model('User');
 var PostSchema = new Schema({
     content: {
         type: String,
+        maxlength:150,
         required: 'Please post content'
     },
     created: {
