@@ -1,7 +1,13 @@
 
 <section data-ng-controller="HomeController">
-    <div data-ng-if="authentication.user">
+
+    <div data-ng-if="authentication.user && (user.activeLocation !== undefined) ">
         <div data-ng-include="'modules/posts/views/create.post.client.view.html'"></div>
     </div>
+
+    <div data-ng-if="user.activeLocation === undefined">
+        <div data-ng-include="'modules/core/views/welcome.client.view.html'"></div>
+    </div>
+
 </section>
 
