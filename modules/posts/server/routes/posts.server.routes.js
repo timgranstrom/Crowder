@@ -1,8 +1,10 @@
 'use strict';
 
 module.exports = function (app) {
+    var path = require('path');
     // Post Routes
     var posts = require('../controllers/posts.server.controller');
+    var comments = require('../../../comments/server/controllers/comments.server.controller');
 
     // Setting up the posts api
     app.route('/api/posts')
@@ -20,6 +22,9 @@ module.exports = function (app) {
     //Downvote
     app.route('/api/posts/:postId/downvote')
         .put(posts.downVote);  //Downvote post
+
+    app.route('/api/posts/:postId/comments')
+        .get(comments.listCommentsForPost);  //Get comments for specific post
 
     // Finish by binding the user middleware
     app.param('postId', posts.postByID);
