@@ -5,19 +5,7 @@
 </div>
 <div class="row" data-ng-controller="PostsController" data-ng-init="listUserPosts()">
     <div class="list-group">
-        <div data-ng-repeat="post in posts" class="list-group-item post">
-            <div class="post-head">
-                <img src="{{post.creator.profileImageURL}}" class="img-thumbnail post-profile-image" width="50">
-
-                <h4 class="list-group-item-heading post-username">{{post.creator.username}}</h4>
-            </div>
-
-            <p class="list-group-item-text" data-ng-bind="post.content"></p>
-
-            <div class="post-bottom">
-                <hr class="post-hr">
-                <p class="list-group-item-text" style="font-size:x-small">Posted {{post.created}}</p>
-            </div>
-        </div>
+        <div data-ng-repeat="post in posts" class="list-group-item post" data-ng-if="post.creator!==null"
+             data-ng-include="'modules/posts/views/post.client.view.html'"></div>
     </div>
 </div>

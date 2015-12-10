@@ -56,4 +56,31 @@ a:hover .header-profile-image {
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .active > a{
   background-image: linear-gradient(to bottom, #ff9908 0%, #ff9908 100%)
 }
+.search-box {
+    height: 34px;
+    background-color: #fdfdfe;
+    border: solid 1px #BFBDBD;
+    color: #000000;
+    margin-top: 0.5em;
+    border-radius:5px;
+}
+a{
+  color: black;
+}
+.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus{
+  background-color: #ff9908;
+  background-image: linear-gradient(to bottom, #ff9908 0%, #ff9908 100%);
+}
+
+@media (max-width: 767px){
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    color: #fdfdfe;
+  }
+  }
+
+.glyph{
+  font-size: 5em;
+  margin-top: 0.4em;
+  margin-left: 22%;
+}
 

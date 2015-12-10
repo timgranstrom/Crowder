@@ -8,4 +8,6 @@ module.exports = function (app) {
     app.route('/api/comments')
         .post(comments.create) //Create a comment
         .get(comments.list);  //Get all comments
+
+
 };

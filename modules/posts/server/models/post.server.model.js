@@ -16,6 +16,7 @@ var UserSchema = mongoose.model('User');
 var PostSchema = new Schema({
     content: {
         type: String,
+        maxlength:150,
         required: 'Please post content'
     },
     created: {
@@ -31,7 +32,19 @@ var PostSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'Location',
         //required: 'Please select a location' //Uncommented for now in order to not crash the application
-    }
+    },
+    upVoters: [{
+        type: Schema.ObjectId,
+        ref: 'User'
+    }],
+    downVoters: [{
+        type: Schema.ObjectId,
+        ref: 'User'
+    }],
+    comments: [{
+        type: Schema.ObjectId,
+        ref: 'Comment'
+    }]
 });
 
 /**

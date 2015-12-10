@@ -66,6 +66,10 @@ var UserSchema = new Schema({
     required: 'Please fill in a username',
     trim: true
   },
+  activeLocation: {
+    type: Schema.ObjectId,
+    ref: 'Location'
+  },
   password: {
     type: String,
     default: '',
