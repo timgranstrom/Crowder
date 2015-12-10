@@ -9,7 +9,6 @@ postsApp.controller('PostsController', ['$scope', '$state', 'Authentication', 'P
 
 
         $scope.listPosts = function (activeLocation) {
-            console.log('posts'+activeLocation);
             if(activeLocation !== undefined){
             $scope.posts = Posts.query({location: activeLocation});
             }
