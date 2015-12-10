@@ -10,8 +10,8 @@ module.exports = function (app) {
         .get(posts.list);  //Get all posts
 
 
-    //app.route('/api/posts/:postId')
-    //    .get(posts.read);  //Get specific post
+    app.route('/api/posts/:postId')
+        .get(posts.read);  //Get specific post
 
     //Upvote
     app.route('/api/posts/:postId/upvote')

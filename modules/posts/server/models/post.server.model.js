@@ -34,11 +34,15 @@ var PostSchema = new Schema({
     },
     upVoters: [{
         type: Schema.ObjectId,
-        ref: 'User',
+        ref: 'User'
     }],
     downVoters: [{
         type: Schema.ObjectId,
-        ref: 'User',
+        ref: 'User'
+    }],
+    comments: [{
+        type: Schema.ObjectId,
+        ref: 'User'
     }]
 });
 
