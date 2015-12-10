@@ -15,7 +15,7 @@ var path = require('path'),
  */
 exports.create = function (req, res) {
     var comment = new PostComment(req.body);
-
+    comment.creator = req.user;
     comment.save(function (err) {
         if (err) {
             return res.status(400).send({

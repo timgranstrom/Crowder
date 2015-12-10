@@ -42,7 +42,7 @@ var PostSchema = new Schema({
     }],
     comments: [{
         type: Schema.ObjectId,
-        ref: 'User'
+        ref: 'Comment'
     }]
 });
 

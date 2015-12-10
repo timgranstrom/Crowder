@@ -63,7 +63,11 @@ exports.create = function (req, res) {
  */
 exports.list = function (req, res) {
 
-    Post.find(req.query).sort('-created').populate('creator', 'profileImageURL username _id').populate('location', '_id municipality').populate('upVoters', '_id').populate('downVoters', '_id').populate('comments', '_id, ').exec(function (err, posts) {
+    Post.find(req.query).sort('-created').populate('creator', 'profileImageURL username _id')
+        .populate('location', '_id municipality').populate({
+        path: 'comments',
+        options: {limit: 2}
+    }).exec(function (err, posts) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -137,7 +141,7 @@ exports.postByID = function (req, res, next, id) {
             message: 'Post is invalid'
         });
     }
-    Post.findById(id).exec(function (err, post) {
+    Post.findById(id).populate('creator', 'profileImageURL username _id').populate('location', '_id municipality').populate('comments').exec(function (err, post) {
         if (err) {
             return next(err);
         } else if (!post) {
