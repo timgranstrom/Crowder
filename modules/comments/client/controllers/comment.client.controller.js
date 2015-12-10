@@ -22,6 +22,7 @@ commentsApp.controller('CommentsController', ['$scope', '$state', 'Authenticatio
                         break;
                     }
                 }
+                $scope.comment = '';
             }, function (errorResponse) {
                 this.error = errorResponse.data.message;
             });
