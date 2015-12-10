@@ -38,21 +38,28 @@
 .post{
     border: #FF9908 1px solid;
     margin-bottom:20px;
+    background-color:#FFE4BD;
+    padding:0 0;
 }
 
 .post-head{
     margin-bottom:10px;
+    padding:10px 15px;
+}
+
+.post-content{
+    padding:10px 15px;
 }
 
 .post-bottom{
     margin-top:10px;
+    padding:10px 15px;
 }
 
 .post-hr{
     margin-top:5px;
-    margin-bottom:5px;
-    border-top:1px solid #ff9908;
-
+    margin-bottom:0;
+    border-top:2px solid #ff9908;
 }
 
 .post-profile-image{
@@ -66,6 +73,41 @@
     word-wrap: break-word;
     font-size: 19px;
 }
+
+.comment{
+    border: 0;
+    /*margin-bottom:1px;*/
+    background-color:#FFCB80;
+    padding:0 0;
+}
+
+.comment-head{
+
+    padding:5px 15px;
+}
+
+.comment-content{
+    padding:5px 15px;
+}
+
+.comment-bottom{
+    margin-top:10px;
+    padding:2px 6px;
+}
+
+.comment-hr{
+    margin-top:0;
+    margin-bottom:0;
+    border-top:1px solid #ff9908;
+}
+
+.comment-create{
+    border: 0;
+    /*margin-bottom:20px;*/
+    padding-left:10px;
+    /*display:inline;*/
+}
+
 .button:active{
     background-color: #ff9908;
 }
@@ -117,6 +159,10 @@
     border: solid 1px #ff9908;
     color: #000000;
     border-radius:5px;
-    height:38px;
-    width:63%;
+    height:42px;
+    width:80%;
+}
+.comments-load-more{
+    padding:2px 6px;
+    color: #a36307;
 }

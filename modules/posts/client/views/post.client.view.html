@@ -1,0 +1,66 @@
+<div class="post-head">
+    <img src="{{post.creator.profileImageURL}}" class="img-thumbnail post-profile-image" width="50">
+
+    <h4 class="list-group-item-heading post-username">{{post.creator.username}}</h4>
+</div>
+<div class="post-content">
+    <p class="list-group-item-text text-content" data-ng-bind="post.content"></p>
+</div>
+<div class="post-bottom">
+    <div data-ng-controller="PostsCreateController">
+
+        <div class="vote-button">
+            <button type="button" class="btn btn-warning btn-xs"
+                    ng-click="upVote(post)">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+            </button>
+
+            <span class="vote-text"> {{calculateVoteDifference(post)}}</span>
+
+            <button type="button" class="btn btn-warning btn-xs" ng-click="downVote(post)">
+                <span class="glyphicon glyphicon-chevron-down"></span>
+            </button>
+        </div>
+
+    </div>
+    <p></p>
+
+    <p class="list-group-item-text bottom-text">Posted {{post.created}} in
+        {{post.location.municipality}}</p>
+</div>
+
+<hr class="post-hr">
+<!--COMMENTS-->
+<div data-ng-controller="CommentsController"
+     data-ng-init="post.comments = listCommentsOfPost(post._id,1)">
+
+    <div class="list-group-item comment" data-ng-repeat="comment in post.comments">
+        <hr class="comment-hr">
+
+        <div class="comment-head">
+            <img src="{{comment.creator.profileImageURL}}" class="img-thumbnail post-profile-image"
+                 width="40">
+
+            <p class="list-group-item-heading comment-username">{{comment.creator.username}}</p>
+        </div>
+        <div class="comment-content">
+            <p class="list-group-item-text comment-content-text" data-ng-bind="comment.content"></p>
+        </div>
+        <div class="comment-bottom">
+            <p class="list-group-item-text comment-bottom-text comment-bottom"> Comment posted
+                {{comment.created}}</p>
+        </div>
+        <hr class="comment-hr">
+    </div>
+
+    <div class="comment-create">
+        <p></p>
+        <form ng-submit="create()">
+            <img src="{{user.profileImageURL}}" class="img-thumbnail post-profile-image" width="40">
+            <input class="comment-box" type="text" name="comment" data-ng-model="comment"
+                   placeholder="Write a comment" maxlength="100" minlength="5">
+        </form>
+    </div>
+    <p></p>
+    <a class="comments-load-more" href="" data-ng-click="post.comments = listCommentsOfPost(post._id)">Load more comments</a>
+</div>
